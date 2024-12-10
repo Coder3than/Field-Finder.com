@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Field Finder</title>
+    <style>
+      h1 {
+        text-align: center;
+        font-weight: bold;
+        color: white;
+        font-size: 48px;
+      }
+
+      body {
+        /* Striped background using linear gradients */
+        background: repeating-linear-gradient(
+          45deg,
+          #4caf50,
+          #4caf50 20px,
+          #66bb6a 20px,
+          #66bb6a 40px
+        );
+        position: relative;
+        height: 100vh;
+        margin: 0;
+      }
+
+      /* Common styles for images */
+      img {
+        width: 500px;
+        border-radius: 1000px;
+        border: 2px solid #000;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+        position: absolute;
+      }
+
+      /* Positioning for the right image */
+      .image-right {
+        bottom: 120px; /* Adjusted to move up by 100px */
+        right: 20px;
+      }
+
+      /* Positioning for the left image */
+      .image-left {
+        bottom: 140px; /* Adjusted to move up by 100px */
+        left: 20px;
+      }
+
+      /* Container for the buttons */
+      .button-container {
+        text-align: center;
+        margin-top: 66px;
+      }
+
+      button {
+        background-color: #4caf50;
+        color: white;
+        border: 2px solid #2e7d32; /* Dark green border */
+        padding: 30px 40px;
+        text-align: center;
+        display: inline-block;
+        font-size: 20px;
+        margin: 0 8px;
+        cursor: pointer;
+        border-radius: 8px;
+      }
+
+      /* Additional styles for anchor links */
+      a {
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Field Finder</h1>
+    <div class="button-container">
+      <a href="soccer-fields.html"><button class="SoccerField">Soccer Fields</button></a>
+      <a href="football-fields.html"><button class="FootballFields">Football Fields</button></a>
+      <a href="baseball-fields.html"><button class="BaseballFields">Baseball Fields</button></a>
+      <a href="tennis-courts.html"><button class="TennisCourts">Tennis Courts</button></a>
+      <a href="basketball-courts.html"><button class="BasketballCourts">Basketball Courts</button></a>
+    </div>
+    <img class="image-right" src="Images/Field Finder 1.jpeg" alt="Field" />
+    <img class="image-left" src="Images/Football-field.jpeg" alt="Football Field" />
+  </body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Baseball Fields</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background: repeating-linear-gradient(
+          90deg,
+          #4caf50,
+          #4caf50 50px,
+          #ffeb3b 50px,
+          #ffeb3b 100px
+        );
+      }
+
+      .content-wrapper {
+        transform: translateY(-200px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .back-button {
+        padding: 10px 20px;
+        font-size: 1em;
+        color: white;
+        background-color: #4caf50;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-bottom: 20px;
+        text-decoration: none;
+      }
+
+      .back-button:hover {
+        background-color: #45a049;
+      }
+
+      h1 {
+        font-size: 3em;
+        color: white;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        margin-bottom: 20px;
+      }
+
+      .search-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .search-bar {
+        width: 300px;
+        padding: 12px;
+        font-size: 1.2em;
+        border: 2px solid #4caf50;
+        border-radius: 25px;
+        outline: none;
+      }
+
+      .search-button {
+        padding: 12px 20px;
+        font-size: 1.2em;
+        color: white;
+        background-color: #4caf50;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        margin-left: -45px;
+      }
+
+      .search-button:hover {
+        background-color: #45a049;
+      }
+
+      .results-container {
+        margin-top: 20px;
+        display: none;
+        width: 100%;
+        max-width: 600px;
+      }
+
+      .result-box {
+        display: flex;
+        align-items: center;
+        background-color: white;
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 15px;
+        margin-top: 20px;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+        text-decoration: none;
+        color: inherit;
+        cursor: pointer;
+      }
+
+      .result-box:hover {
+        background-color: #f1f1f1;
+      }
+
+      .result-image {
+        width: 80px;
+        height: 80px;
+        border-radius: 8px;
+        margin-right: 20px;
+      }
+
+      .result-text {
+        font-size: 1.2em;
+        color: #333;
+        line-height: 1.4;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content-wrapper">
+      <a href="index.html" class="back-button">Back to Homepage</a>
+      <h1>Baseball Fields</h1>
+
+      <div class="search-container">
+        <input
+          type="text"
+          class="search-bar"
+          placeholder="Search for baseball fields..."
+          id="searchBar"
+        />
+        <button class="search-button">Search</button>
+      </div>
+
+      <div class="results-container" id="resultsContainer"></div>
+    </div>
+
+    <script>
+      const searchBar = document.getElementById("searchBar");
+      const resultsContainer = document.getElementById("resultsContainer");
+
+      const searchResults = {
+        "leon springs": [
+          {
+            image: "images/LeonSpringsField1.jpg",
+            description: "Baseball field in Leon Springs with great facilities.",
+            link: "LeonSpringsField1.html",
+          },
+          {
+            image: "images/Hayden.jpg",
+            description: "Another view of Leon Springs baseball field.",
+            link: "LeonSpringsField2.html",
+          },
+        ],
+        boerne: [
+          {
+            image: "images/BorneField1.jpg",
+            description: "Field 1 description.",
+            link: "given_field.html",
+          },
+          {
+            image: "images/BorneField2.jpg",
+            description: "Another Boerne baseball field with great space.",
+            link: "given_field.html",
+          },
+        ],
+        helotes: [
+          {
+            image: "images/HelotesField1.jpg",
+            description: "Helotes baseball field, well maintained.",
+            link: "given_field.html",
+          },
+          {
+            image: "images/HelotesField2.jpg",
+            description: "Large open baseball field in Helotes.",
+            link: "given_field.html",
+          },
+        ],
+        "shavano park": [
+          {
+            image: "images/ShavanoParkField1.jpg",
+            description: "Shavano Park baseball field with excellent amenities.",
+            link: "given_field.html",
+          },
+          {
+            image: "images/ShavanoParkField2.jpg",
+            description: "Spacious baseball field in Shavano Park.",
+            link: "given_field.html",
+          },
+        ],
+        antarctica: [
+          {
+            image: "images/AntarcticaField1.jpg",
+            description: "A unique baseball field setup in icy Antarctica.",
+            link: "Flappybird.html",
+          },
+          {
+            image: "images/AntarcticaField2.jpg",
+            description:
+              "Another view of a baseball field in Antarctica with icy surroundings.",
+            link: "given_field.html",
+          },
+        ],
+      };
+
+      searchBar.addEventListener("input", () => {
+        const searchTerm = searchBar.value.toLowerCase();
+
+        if (searchResults[searchTerm]) {
+          resultsContainer.innerHTML = "";
+          resultsContainer.style.display = "block";
+
+          searchResults[searchTerm].forEach((result) => {
+            const resultBox = document.createElement("a");
+            resultBox.href = result.link;
+            resultBox.classList.add("result-box");
+
+            const img = document.createElement("img");
+            img.src = result.image;
+            img.alt = result.description;
+            img.classList.add("result-image");
+
+            const text = document.createElement("p");
+            text.classList.add("result-text");
+            text.textContent = result.description;
+
+            resultBox.appendChild(img);
+            resultBox.appendChild(text);
+            resultsContainer.appendChild(resultBox);
+          });
+        } else {
+          resultsContainer.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>
